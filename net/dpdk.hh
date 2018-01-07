@@ -25,6 +25,7 @@
 #define _SEASTAR_DPDK_DEV_H
 
 #include <memory>
+#include "config.hh"
 #include "net.hh"
 #include "core/sstring.hh"
 
@@ -35,6 +36,10 @@ std::unique_ptr<net::device> create_dpdk_net_device(
                                     uint8_t num_queues = 1,
                                     bool use_lro = true,
                                     bool enable_fc = true);
+
+std::unique_ptr<net::device> create_dpdk_net_device(
+                                    const net::hw_config& hw_cfg);
+
 
 boost::program_options::options_description get_dpdk_net_options_description();
 
